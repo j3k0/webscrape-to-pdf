@@ -6,12 +6,13 @@ This Python script crawls multiple websites starting from given URLs, scrapes th
 
 - Recursively crawls multiple websites within their respective domains
 - Respects robots.txt rules
-- Implements polite scraping with delays between requests
+- Implements polite scraping with configurable delays between requests
 - Generates a single PDF with the scraped content from all sites
 - Supports verbose mode for debugging
 - Can output to a file or stdout
 - Implements persistent caching with ETag support for efficient repeated runs
 - Configurable cache directory
+- Implements a retry strategy for scraping errors (50 attempts with 10-second delays)
 
 ## Installation
 
@@ -29,7 +30,7 @@ This Python script crawls multiple websites starting from given URLs, scrapes th
 ## Usage
 
 ```
-python website_to_pdf.py [-h] [-o OUTPUT] [-v] [--cache-dir CACHE_DIR] url [url ...]
+python website_to_pdf.py [-h] [-o OUTPUT] [-v] [--cache-dir CACHE_DIR] [-d DELAY] url [url ...]
 ```
 
 Arguments:
@@ -37,6 +38,7 @@ Arguments:
 - `-o OUTPUT`, `--output OUTPUT`: The output PDF file name (optional, default: stdout)
 - `-v`, `--verbose`: Increase output verbosity (optional)
 - `--cache-dir CACHE_DIR`: Directory to store the cache (optional)
+- `-d DELAY`, `--delay DELAY`: Delay between requests in seconds (optional, default: 1)
 - `-h`, `--help`: Show help message and exit
 
 Examples:
@@ -50,9 +52,14 @@ Examples:
    python website_to_pdf.py https://example.com https://another-example.com
    ```
 
-3. Scrape with verbose output and custom cache directory:
+3. Scrape with verbose output, custom cache directory, and faster delay:
    ```
-   python website_to_pdf.py https://example.com https://another-example.com -o output.pdf -v --cache-dir /path/to/cache
+   python website_to_pdf.py https://example.com https://another-example.com -o output.pdf -v --cache-dir /path/to/cache -d 0.1
+   ```
+
+4. Scrape your own website with no delay:
+   ```
+   python website_to_pdf.py https://your-own-website.com -o output.pdf -d 0
    ```
 
 ## Caching
