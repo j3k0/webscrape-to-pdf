@@ -21,7 +21,7 @@ from requests.exceptions import RequestException
 # Constants
 USER_AGENT = 'YourScraperBot/1.0 (+http://example.com/bot)'
 DEFAULT_DELAY = 1  # Default delay between requests in seconds
-DEFAULT_CACHE_DIR = os.path.join(os.path.expanduser("~"), ".website_to_pdf_cache")
+DEFAULT_CACHE_DIR = os.path.join(os.path.expanduser("~"), ".webscrape2pdf_cache")
 
 MAX_RETRIES = 50
 RETRY_DELAY = 10
@@ -276,7 +276,7 @@ def main():
     parser.add_argument("urls", nargs='+', help="The base URLs to scrape")
     parser.add_argument("-o", "--output", help="The output PDF file name (default: stdout)")
     parser.add_argument("-v", "--verbose", action="store_true", help="Increase output verbosity")
-    parser.add_argument("--cache-dir", help="Directory to store the cache (default: ~/.website_to_pdf_cache)")
+    parser.add_argument("--cache-dir", help="Directory to store the cache (default: ~/.webscrape2pdf_cache)")
     parser.add_argument("-d", "--delay", type=float, default=DEFAULT_DELAY, 
                         help=f"Delay between requests in seconds (default: {DEFAULT_DELAY})")
     parser.add_argument("--force-cache", action="store_true", help="Always use cached version if available, ignoring ETag")
