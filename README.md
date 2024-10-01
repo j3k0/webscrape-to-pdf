@@ -17,6 +17,7 @@ WebScrape2PDF is a powerful Python tool that crawls multiple websites, scrapes t
 - 🔧 Configurable cache directory
 - 🔄 Implements a retry strategy for scraping errors (50 attempts with 10-second delays)
 - 🌐 Handles JavaScript-rendered content using Selenium
+- 🔐 Automatic detection and handling of Wikimedia login requirements
 
 ## 🛠️ Installation
 
@@ -75,6 +76,11 @@ webscrape2pdf [options] URL [URL ...]
 4. Scrape your own website with no delay:
    ```
    webscrape2pdf https://your-own-website.com -o output.pdf -d 0
+   ```
+
+5. Scrape a Wikimedia site (will prompt for login if required):
+   ```
+   webscrape2pdf https://your-wikimedia-site.com -o output.pdf
    ```
 
 ## 💾 Caching

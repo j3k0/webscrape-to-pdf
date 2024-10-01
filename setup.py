@@ -7,7 +7,6 @@ setup(
     install_requires=[
         "requests",
         "beautifulsoup4",
-        "reportlab",
         "requests-cache",
         "diskcache",
         "xhtml2pdf",
@@ -15,7 +14,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "webscrape2pdf=webscrape2pdf:main",
+            "webscrape2pdf=webscrape2pdf.main:main",
         ],
     },
 )
